@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eustache t’a préparé une surprise 💌</title>
+<style>
+:root{--bg:#f4efff;--ink:#1d1545;--gold:#d98a00;--coral:#e8503f;--mint:#0f9e82;--card:#ffffff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1340;--ink:#fff6e0;--gold:#f5b83d;--coral:#ff7a66;--mint:#4fd6b5;--card:#2a2060}}
+:root[data-theme="dark"]{--bg:#1b1340;--ink:#fff6e0;--gold:#f5b83d;--coral:#ff7a66;--mint:#4fd6b5;--card:#2a2060}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;display:flex;align-items:center;justify-content:center;overflow-x:hidden}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:5}
+main{width:100%;max-width:30rem;padding:1.5rem;text-align:center}
+.gift{font-size:6rem;line-height:1;display:block;margin:0 auto 1rem;animation:wob 2.4s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+h1{font-size:clamp(1.7rem,7vw,2.4rem);line-height:1.15;margin:0 0 .6rem;font-weight:800}
+p.sub{margin:0 0 2rem;font-size:1.1rem;opacity:.85}
+button{font:inherit;font-weight:700;font-size:1.2rem;color:#1b1340;background:var(--gold);border:0;border-radius:999px;padding:1rem 2.2rem;cursor:pointer;box-shadow:0 6px 0 var(--coral);transition:transform .1s,box-shadow .1s}
+button:active{transform:translateY(4px);box-shadow:0 2px 0 var(--coral)}
+button:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+#msg{display:none}
+.big{font-size:clamp(2rem,9vw,3rem);line-height:1.1;font-weight:800;margin:0 0 1.5rem;color:var(--gold)}
+.l{opacity:0;transform:translateY(12px);font-size:1.25rem;line-height:1.5;margin:.35rem 0;transition:opacity .7s,transform .7s}
+.l.on{opacity:1;transform:none}
+.l.strong{font-weight:800;color:var(--coral);font-size:1.4rem;margin-top:1.2rem}
+.sign{margin-top:2rem;padding:1rem;background:var(--card);border-radius:1rem;font-size:1.05rem}
+.sign b{color:var(--mint)}
+@media (prefers-reduced-motion:reduce){.gift{animation:none}.l{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<main>
+  <section id="intro">
+    <span class="gift" aria-hidden="true">🎁</span>
+    <h1>Eustache t’a préparé une surprise 💌</h1>
+    <p class="sub">Bienvenue, ce message est pour toi.</p>
+    <button id="open" type="button">Touche ici</button>
+  </section>
+  <section id="msg" aria-live="polite">
+    <p class="big">Joyeux anniversaire, Bienvenue ! 🎂</p>
+    <p class="l">Que cette nouvelle année 🎈</p>
+    <p class="l">t’apporte santé et joie 🎁</p>
+    <p class="l">de belles réussites dans tout ce que tu entreprends ⭐</p>
+    <p class="l">et que tous tes rêves deviennent réalité 🚀</p>
+    <p class="l strong">Je suis fier de toi, aujourd’hui, demain et toujours. 💛</p>
+    <p class="l sign">Avec tout mon amour,<br><b>ton grand frère Eustache</b></p>
+  </section>
+</main>
+<script>
+(function(){
+var cv=document.getElementById('c'),cx=cv.getContext('2d'),P=[],run=false;
+function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
+var cols=['#f5b83d','#ff7a66','#4fd6b5','#ffffff','#b79cff'];
+function burst(){for(var i=0;i<140;i++){P.push({x:cv.width/2,y:cv.height*.45,vx:(Math.random()-.5)*14,vy:-Math.random()*13-3,s:4+Math.random()*6,c:cols[i%5],r:Math.random()*6,life:140+Math.random()*60})}if(!run){run=true;tick()}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(function(p){return p.life>0});P.forEach(function(p){p.vy+=.28;p.x+=p.vx;p.y+=p.vy;p.r+=.2;p.life--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});if(P.length)requestAnimationFrame(tick);else run=false}
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+document.getElementById('open').addEventListener('click',function(){
+document.getElementById('intro').style.display='none';
+document.getElementById('msg').style.display='block';
+if(!rm)burst();
+var ls=document.querySelectorAll('.l');
+ls.forEach(function(el,i){setTimeout(function(){el.classList.add('on')},rm?0:600+i*900)});
+});
+})();
+</script>
+</body>
+</html>
