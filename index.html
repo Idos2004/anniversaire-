@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#211b3b">
+  <meta name="description" content="Créez une surprise numérique personnalisée pour les personnes qui comptent.">
+  <title>Éclat — Créez une surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Éclat, accueil"><span class="brand-mark">✦</span> éclat</a>
+    <span class="top-note">Les belles attentions méritent leur moment.</span>
+  </header>
+  <main class="shell">
+    <section id="builder" class="builder">
+      <div class="intro">
+        <p class="eyebrow">UNE ATTENTION QUI RESTE</p>
+        <h1>Faites-lui une<br><em>belle surprise.</em></h1>
+        <p class="intro-copy">Créez une carte interactive, ajoutez vos mots et partagez un petit moment de bonheur.</p>
+      </div>
+      <div class="progress" aria-label="Étapes de création">
+        <span class="step active" data-step="1">1 <b>Occasion</b></span><i></i>
+        <span class="step" data-step="2">2 <b>Modèle</b></span><i></i>
+        <span class="step" data-step="3">3 <b>Personnaliser</b></span>
+      </div>
+      <section id="step-occasion" class="panel">
+        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 1</p><h2>Quelle est l'occasion ?</h2></div><span class="counter">01 / 03</span></div>
+        <div id="occasion-grid" class="occasion-grid"></div>
+      </section>
+      <section id="step-template" class="panel hidden">
+        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 2</p><h2>Choisissez une ambiance</h2></div><button class="text-button" id="back-occasion">← Occasions</button></div>
+        <div id="template-grid" class="template-grid"></div>
+      </section>
+      <section id="step-edit" class="panel hidden">
+        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 3</p><h2>Ajoutez votre touche</h2></div><button class="text-button" id="back-template">← Modèles</button></div>
+        <div class="edit-layout">
+          <form id="card-form" class="form">
+            <label>Prénom du destinataire<input id="recipient" maxlength="40" required placeholder="Ex. : Bienvenue"></label>
+            <label>Votre prénom / signature<input id="sender" maxlength="40" placeholder="Ex. : Eustache"></label>
+            <label>Votre message<textarea id="message" rows="4" maxlength="420" placeholder="Écrivez quelques mots qui viennent du cœur…"></textarea><small><span id="char-count">0</span>/420 caractères</small></label>
+            <label class="upload-label">Ajouter une photo <span class="optional">facultatif</span><input id="photo" type="file" accept="image/*"><small>La photo est utilisée dans cet aperçu. Elle n'est pas intégrée au lien partagé dans cette première version.</small></label>
+            <label>Couleur principale<input id="accent" type="color" value="#d7a85b"></label>
+            <div class="form-actions"><button type="button" class="secondary" id="preview-button">Voir l'aperçu</button><button type="submit" class="primary">Créer ma surprise <span>→</span></button></div>
+          </form>
+          <aside class="preview-wrap"><p class="preview-label">APERÇU EN DIRECT</p><div id="live-preview" class="surprise-card"><div class="preview-art">✦</div><p class="preview-kicker">UNE PETITE ATTENTION</p><h3 id="preview-title">Une surprise pour vous</h3><p id="preview-message">Votre message apparaîtra ici.</p><p id="preview-sign" class="preview-sign"></p></div></aside>
+        </div>
+      </section>
+    </section>
+    <section id="share-view" class="share-view hidden" aria-live="polite">
+      <p class="eyebrow">UN PETIT MOMENT POUR TOI</p>
+      <div class="gift-icon" aria-hidden="true">🎁</div>
+      <h1 id="shared-heading">Une surprise vous attend.</h1>
+      <p class="shared-lead" id="shared-lead">Quelqu'un a préparé quelques mots pour vous.</p>
+      <button id="reveal-button" class="primary reveal-button">Découvrir ma surprise ✨</button>
+      <article id="revealed-card" class="revealed-card hidden">
+        <div class="revealed-spark">✦</div><p class="eyebrow" id="revealed-category"></p>
+        <h2 id="revealed-title"></h2><img id="revealed-photo" class="revealed-photo hidden" alt="Photo ajoutée à la carte">
+        <p id="revealed-message"></p><p class="revealed-sign" id="revealed-sign"></p>
+      </article>
+      <p class="share-footer">Créé avec <b>éclat</b> · Une attention qui fait du bien.</p>
+    </section>
+    <footer class="footer">Simplement, pour les personnes qui comptent. <span>✦</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/templates.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
