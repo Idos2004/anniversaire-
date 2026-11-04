@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#211b3b">
   <meta name="description" content="Créez une surprise numérique personnalisée pour les personnes qui comptent.">
-  <title>Éclat — Créez une surprise</title>
+  <title>Supris — Créez une surprise</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -13,15 +13,38 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="./" aria-label="Éclat, accueil"><span class="brand-mark">✦</span> éclat</a>
-    <span class="top-note">Les belles attentions méritent leur moment.</span>
+    <a class="brand" href="./" aria-label="Supris, accueil"><span class="brand-mark">✦</span> SUPRIS</a>
+    <nav class="top-nav" aria-label="Navigation principale">
+      <a href="#occasions">Occasions</a>
+      <a href="#how-it-works">Comment ça marche</a>
+      <a class="nav-cta" href="#occasions">Créer une surprise <span>→</span></a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
   </header>
+
   <main class="shell">
-    <section id="builder" class="builder">
-      <div class="intro">
-        <p class="eyebrow">UNE ATTENTION QUI RESTE</p>
-        <h1>Faites-lui une<br><em>belle surprise.</em></h1>
-        <p class="intro-copy">Créez une carte interactive, ajoutez vos mots et partagez un petit moment de bonheur.</p>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">LES PETITES ATTENTIONS FONT LES GRANDS SOUVENIRS</p>
+        <h1>Créez des surprises<br><em>qui touchent le cœur.</em></h1>
+        <p class="intro-copy">Transformez vos mots, vos photos et vos émotions en une carte surprise unique à partager avec ceux qui comptent.</p>
+        <a class="primary hero-cta" href="#occasions">✦ Créer une surprise <span>→</span></a>
+        <div class="hero-proof"><span>✧</span> Simple à créer <span>·</span> Personnelle à partager <span>·</span> Inoubliable à recevoir</div>
+      </div>
+      <div class="hero-art" aria-label="Illustration d'un cadeau surprise">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <span class="hero-star star-one">✦</span><span class="hero-star star-two">✧</span><span class="hero-star star-three">✦</span>
+        <div class="gift-glow"></div>
+        <div class="gift-box"><div class="gift-lid"></div><div class="gift-ribbon-v"></div><div class="gift-ribbon-h"></div><div class="gift-bow bow-left"></div><div class="gift-bow bow-right"></div><div class="gift-heart">♥</div></div>
+        <div class="hero-note note-top">Une pensée pour toi <span>♥</span></div>
+        <div class="hero-note note-bottom">À ouvrir avec le cœur ✨</div>
+      </div>
+    </section>
+
+    <section id="occasions" class="builder">
+      <div class="builder-heading">
+        <div><p class="eyebrow">COMMENCEZ EN QUELQUES ÉTAPES</p><h2>Quelle occasion souhaitez-vous célébrer ?</h2><p>Choisissez un moment, nous vous aidons à créer la surprise.</p></div>
+        <span class="heading-spark">✦</span>
       </div>
       <div class="progress" aria-label="Étapes de création">
         <span class="step active" data-step="1">1 <b>Occasion</b></span><i></i>
@@ -29,7 +52,7 @@
         <span class="step" data-step="3">3 <b>Personnaliser</b></span>
       </div>
       <section id="step-occasion" class="panel">
-        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 1</p><h2>Quelle est l'occasion ?</h2></div><span class="counter">01 / 03</span></div>
+        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 1</p><h2>Choisissez votre occasion</h2></div><span class="counter">01 / 03</span></div>
         <div id="occasion-grid" class="occasion-grid"></div>
       </section>
       <section id="step-template" class="panel hidden">
@@ -37,13 +60,13 @@
         <div id="template-grid" class="template-grid"></div>
       </section>
       <section id="step-edit" class="panel hidden">
-        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 3</p><h2>Ajoutez votre touche</h2></div><button class="text-button" id="back-template">← Modèles</button></div>
+        <div class="section-heading"><div><p class="eyebrow">ÉTAPE 3</p><h2>Ajoutez votre touche personnelle</h2></div><button class="text-button" id="back-template">← Modèles</button></div>
         <div class="edit-layout">
           <form id="card-form" class="form">
-            <label>Prénom du destinataire<input id="recipient" maxlength="40" required placeholder="Ex. : Bienvenue"></label>
+            <label>Prénom du destinataire<input id="recipient" maxlength="40" required placeholder="Ex. : Amina"></label>
             <label>Votre prénom / signature<input id="sender" maxlength="40" placeholder="Ex. : Eustache"></label>
             <label>Votre message<textarea id="message" rows="4" maxlength="420" placeholder="Écrivez quelques mots qui viennent du cœur…"></textarea><small><span id="char-count">0</span>/420 caractères</small></label>
-            <label class="upload-label">Ajouter une photo <span class="optional">facultatif</span><input id="photo" type="file" accept="image/*"><small>La photo est utilisée dans cet aperçu. Elle n'est pas intégrée au lien partagé dans cette première version.</small></label>
+            <label class="upload-label">Ajouter une photo <span class="optional">facultatif</span><input id="photo" type="file" accept="image/*"><small>Ajoutez un souvenir en image à votre création.</small></label>
             <label>Couleur principale<input id="accent" type="color" value="#d7a85b"></label>
             <div class="form-actions"><button type="button" class="secondary" id="preview-button">Voir l'aperçu</button><button type="submit" class="primary">Créer ma surprise <span>→</span></button></div>
           </form>
@@ -51,6 +74,16 @@
         </div>
       </section>
     </section>
+
+    <section id="how-it-works" class="how-section">
+      <div class="section-heading"><div><p class="eyebrow">RIEN DE PLUS SIMPLE</p><h2>Votre surprise en trois étapes</h2></div></div>
+      <div class="how-grid">
+        <article class="how-card"><span>01</span><div class="how-icon">🎁</div><h3>Choisissez</h3><p>Sélectionnez l'occasion et le modèle qui vous ressemble.</p></article>
+        <article class="how-card"><span>02</span><div class="how-icon">✍️</div><h3>Personnalisez</h3><p>Ajoutez votre message et donnez à votre carte votre touche personnelle.</p></article>
+        <article class="how-card"><span>03</span><div class="how-icon">💌</div><h3>Partagez</h3><p>Envoyez votre surprise et faites vivre un joli moment à son destinataire.</p></article>
+      </div>
+    </section>
+
     <section id="share-view" class="share-view hidden" aria-live="polite">
       <p class="eyebrow">UN PETIT MOMENT POUR TOI</p>
       <div class="gift-icon" aria-hidden="true">🎁</div>
@@ -62,12 +95,18 @@
         <h2 id="revealed-title"></h2><img id="revealed-photo" class="revealed-photo hidden" alt="Photo ajoutée à la carte">
         <p id="revealed-message"></p><p class="revealed-sign" id="revealed-sign"></p>
       </article>
-      <p class="share-footer">Créé avec <b>éclat</b> · Une attention qui fait du bien.</p>
+      <p class="share-footer">Créé avec <b>Supris</b> · Une attention qui fait du bien.</p>
     </section>
-    <footer class="footer">Simplement, pour les personnes qui comptent. <span>✦</span></footer>
+    <footer class="footer">Fait avec attention, pour les personnes qui comptent. <span>✦</span></footer>
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="assets/js/templates.js"></script>
   <script src="assets/js/app.js"></script>
+  <script>
+    const menuToggle=document.getElementById('menu-toggle');
+    const topNav=document.querySelector('.top-nav');
+    menuToggle.addEventListener('click',()=>{const open=topNav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));});
+    topNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{topNav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');}));
+  </script>
 </body>
 </html>
