@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Éclat · Des cartes d’anniversaire qui racontent votre histoire</title>
+<meta name="description" content="Transformez vos souvenirs en une carte d’anniversaire qui s’ouvre comme une vraie enveloppe. Gratuit, sans inscription, partage WhatsApp en un lien court.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éclat">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Éclat · Racontez-lui votre histoire 💌">
+<meta property="og:description" content="Une carte d’anniversaire qui s’ouvre comme une vraie enveloppe, écrite à partir de vos souvenirs.">
+<meta property="og:url" content="https://eclat-surprises.vercel.app/">
+<meta property="og:image" content="https://eclat-surprises.vercel.app/assets/og/envelope-lettre.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5efe6">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+<script>/* anciens liens #data=… : redirigés vers la nouvelle visionneuse */
+(function (h) { if (/^#(data|carte)=/.test(h)) location.replace('/c/local' + h); })(location.hash);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="/assets/css/studio.css?v=3">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/" aria-label="Éclat, accueil">éclat<span>.</span></a>
+  <ol class="steps" id="steps" hidden>
+    <li data-step="1"><b>1</b><span>Pour qui</span></li>
+    <li data-step="2"><b>2</b><span>Votre histoire</span></li>
+    <li data-step="3"><b>3</b><span>Le récit</span></li>
+    <li data-step="4"><b>4</b><span>Relecture</span></li>
+  </ol>
+</header>
+
+<main id="main">
+  <!-- Accueil -->
+  <section id="home" class="home">
+    <div class="hero">
+      <p class="kicker">Cartes d’anniversaire · gratuites · sans inscription</p>
+      <h1>Ne lui souhaitez pas seulement un joyeux anniversaire. <em>Racontez-lui votre histoire.</em></h1>
+      <p class="lede">Un souvenir, un merci, un détail rien qu’à vous. Éclat en fait une lettre qui s’ouvre comme une vraie enveloppe, à envoyer en un lien court sur WhatsApp.</p>
+      <div class="cta">
+        <button class="btn primary" id="start" type="button">Commencer ma lettre</button>
+        <button class="btn ghost" id="demo" type="button">Voir un exemple</button>
+      </div>
+      <p class="resume" id="resume" hidden></p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="mini-env">
+        <div class="mini-letter"><span>Pour toi</span><i></i><i></i><i></i></div>
+        <div class="mini-pocket"></div>
+        <div class="mini-flap"></div>
+        <div class="mini-seal">♥</div>
+      </div>
+    </div>
+    <ol class="how">
+      <li><b>Racontez</b><span>Quelques souvenirs, avec vos mots. Pas besoin d’être écrivain.</span></li>
+      <li><b>Choisissez un récit</b><span>Lettre intime, album, grand secret ou toast festif.</span></li>
+      <li><b>Scellez, envoyez</b><span>Un lien court, un bel aperçu WhatsApp, une enveloppe à ouvrir.</span></li>
+    </ol>
+    <section class="recent" id="recent" hidden>
+      <h2>Vos enveloppes envoyées</h2>
+      <ul id="recent-list"></ul>
+    </section>
+  </section>
+
+  <!-- Studio -->
+  <section id="wizard" class="wizard" hidden>
+    <!-- 1. Pour qui -->
+    <form id="step-1" class="step" novalidate>
+      <p class="step-kicker">Étape 1 sur 4</p>
+      <h2>Pour qui est cette lettre&nbsp;?</h2>
+      <fieldset class="field">
+        <legend>Cette personne, c’est…</legend>
+        <div class="chips" id="rel-chips"></div>
+      </fieldset>
+      <fieldset class="field" id="g-field">
+        <legend>Il ou elle&nbsp;?</legend>
+        <div class="seg">
+          <label><input type="radio" name="g" value="f" data-a="g"><span>Elle</span></label>
+          <label><input type="radio" name="g" value="m" data-a="g"><span>Il</span></label>
+        </div>
+      </fieldset>
+      <label class="field">
+        <span class="label" id="to-label">Son prénom</span>
+        <input id="to" data-a="to" maxlength="40" autocomplete="off" enterkeyhint="next" placeholder="Awa">
+      </label>
+      <div class="row">
+        <label class="field">
+          <span class="label">Âge fêté <em>facultatif</em></span>
+          <input id="age" data-a="age" type="number" inputmode="numeric" min="1" max="120" placeholder="25">
+        </label>
+        <label class="field" id="years-field">
+          <span class="label">Vous vous connaissez depuis <em>facultatif</em></span>
+          <span class="suffix"><input id="years" data-a="years" type="number" inputmode="numeric" min="1" max="99" placeholder="8"><span>ans</span></span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="field">
+          <span class="label">Votre prénom (signature)</span>
+          <input id="from" data-a="from" maxlength="40" autocomplete="given-name" placeholder="Koffi">
+        </label>
+        <fieldset class="field">
+          <legend>Vous êtes</legend>
+          <div class="seg seg-3">
+            <label><input type="radio" name="fg" value="f" data-a="fg"><span>Une femme</span></label>
+            <label><input type="radio" name="fg" value="m" data-a="fg"><span>Un homme</span></label>
+            <label><input type="radio" name="fg" value="" data-a="fg"><span>Peu importe</span></label>
+          </div>
+        </fieldset>
+      </div>
+      <p class="why">Ces détails servent à accorder chaque mot&nbsp;: «&nbsp;ta sœur&nbsp;», «&nbsp;fière de toi&nbsp;», «&nbsp;prête&nbsp;»…</p>
+      <p class="error" id="err-1" role="alert"></p>
+      <div class="actions">
+        <button class="btn ghost" type="button" data-home>← Accueil</button>
+        <button class="btn primary" type="submit">Raconter votre histoire →</button>
+      </div>
+    </form>
+
+    <!-- 2. Votre histoire -->
+    <form id="step-2" class="step" novalidate hidden>
+      <p class="step-kicker">Étape 2 sur 4</p>
+      <h2>Votre histoire avec <span data-bind="to">cette personne</span></h2>
+      <p class="lede">Écrivez comme vous parlez. Un détail vrai vaut mieux que mille compliments&nbsp;: Éclat s’occupe de la mise en récit.</p>
+
+      <div class="prompt" data-key="memory">
+        <div class="prompt-head"><span class="n">01</span><h3>Le souvenir</h3><span class="tag">le cœur de la carte</span></div>
+        <label><span class="starter">Je repense souvent à…</span>
+          <textarea id="memory" data-a="memory" rows="3" maxlength="400"></textarea></label>
+        <p class="tip">Un moment précis&nbsp;: un lieu, une saison, une phrase. Plus c’est concret, plus ça touche.</p>
+      </div>
+      <div class="prompt" data-key="admire">
+        <div class="prompt-head"><span class="n">02</span><h3>Ce que vous admirez</h3></div>
+        <label><span class="starter">Ce que j’admire le plus chez toi, c’est…</span>
+          <textarea id="admire" data-a="admire" rows="2" maxlength="240" placeholder="ta façon de ne jamais abandonner, même quand tout semble perdu"></textarea></label>
+      </div>
+      <div class="prompt" data-key="qualities">
+        <div class="prompt-head"><span class="n">03</span><h3>En trois mots</h3><span class="tag" id="q-count">0 / 3</span></div>
+        <div class="chips small" id="q-chips"></div>
+        <p class="tip">Éclat ne se contente pas de lister ces mots&nbsp;: il les transforme en images concrètes.</p>
+      </div>
+      <div class="prompt" data-key="thanks">
+        <div class="prompt-head"><span class="n">04</span><h3>Le merci</h3></div>
+        <label><span class="starter">Merci pour…</span>
+          <textarea id="thanks" data-a="thanks" rows="2" maxlength="240" placeholder="toutes ces fois où tu as décroché à 2 h du matin sans poser de questions"></textarea></label>
+      </div>
+      <div class="prompt" data-key="joke">
+        <div class="prompt-head"><span class="n">05</span><h3>Rien qu’à vous</h3></div>
+        <label><span class="starter">Un surnom, une blague, une chanson, un lieu…</span>
+          <input id="joke" data-a="joke" maxlength="90" placeholder="la team attiéké du dimanche"></label>
+        <p class="tip">Il apparaîtra entre guillemets, sans explication. Ceux qui savent, savent.</p>
+      </div>
+      <div class="prompt" data-key="wish">
+        <div class="prompt-head"><span class="n">06</span><h3>Le vœu</h3></div>
+        <label><span class="starter">Cette année, je te souhaite…</span>
+          <textarea id="wish" data-a="wish" rows="2" maxlength="240" placeholder="de décrocher ce diplôme et de t’offrir enfin ce voyage à Zanzibar"></textarea></label>
+      </div>
+      <div class="prompt surprise" data-key="secret">
+        <div class="prompt-head"><span class="n">07</span><h3>La surprise finale</h3><span class="tag">facultatif</span></div>
+        <label><span class="starter">Gardé pour la toute fin, sous un voile à toucher…</span>
+          <textarea id="secret" data-a="secret" rows="2" maxlength="300" placeholder="Samedi, 19 h. Je t’emmène dîner là où tout a commencé. Prépare-toi."></textarea></label>
+        <p class="tip">Un cadeau, un rendez-vous, une confidence. C’est la dernière chose qu’on découvre.</p>
+      </div>
+
+      <div class="depth" id="depth" aria-live="polite">
+        <div class="depth-bar"><i id="depth-fill"></i></div>
+        <p><b id="depth-level">Esquisse</b> <span id="depth-tip"></span></p>
+      </div>
+      <p class="error" id="err-2" role="alert"></p>
+      <div class="actions">
+        <button class="btn ghost" type="button" data-back>← Retour</button>
+        <button class="btn primary" type="submit">Choisir le récit →</button>
+      </div>
+    </form>
+
+    <!-- 3. Le récit -->
+    <section id="step-3" class="step" hidden>
+      <p class="step-kicker">Étape 3 sur 4</p>
+      <h2>Comment voulez-vous la raconter&nbsp;?</h2>
+      <p class="lede">Même histoire, quatre façons de la vivre. Chaque récit a sa voix, son rythme et sa mise en scène.</p>
+      <div class="styles" id="styles" role="radiogroup" aria-label="Style de récit"></div>
+
+      <h3 class="sub">Photos <em>facultatif · 3 maximum</em></h3>
+      <p class="tip">La première accompagne votre souvenir. Elles apparaissent comme des polaroïds qui se développent.</p>
+      <div class="photos" id="photos"></div>
+      <label class="btn ghost add-photo" id="add-photo">
+        <input type="file" id="photo-input" accept="image/*" multiple hidden>
+        + Ajouter une photo
+      </label>
+
+      <h3 class="sub">Ambiance sonore</h3>
+      <div class="seg seg-3" id="music">
+        <label><input type="radio" name="music" value="boite"><span>Boîte à musique</span></label>
+        <label><input type="radio" name="music" value="piano"><span>Piano feutré</span></label>
+        <label><input type="radio" name="music" value="none"><span>Silence</span></label>
+      </div>
+      <button class="btn ghost small" type="button" id="music-test">▶ Écouter</button>
+      <p class="tip">Au moment de souffler la bougie, la mélodie de «&nbsp;Joyeux anniversaire&nbsp;» prend le relais.</p>
+
+      <div class="actions">
+        <button class="btn ghost" type="button" data-back>← Retour</button>
+        <button class="btn primary" type="button" id="to-review">Relire la lettre →</button>
+      </div>
+    </section>
+
+    <!-- 4. Relecture -->
+    <section id="step-4" class="step" hidden>
+      <p class="step-kicker">Étape 4 sur 4</p>
+      <h2>Relisez, ajustez, signez</h2>
+      <p class="lede">Chaque passage est modifiable. Touchez ↻ pour une autre formulation.</p>
+      <ol class="scenes" id="scenes"></ol>
+      <div class="sign-box">
+        <label class="field"><span class="label">Formule finale</span><input id="sign-lead" maxlength="80"></label>
+        <label class="field"><span class="label">Signature</span><input id="sign-name" maxlength="60"></label>
+      </div>
+      <p class="error" id="err-4" role="alert"></p>
+      <div class="actions sticky">
+        <button class="btn ghost" type="button" data-back>← Retour</button>
+        <button class="btn ghost only-mobile" type="button" data-preview>Aperçu</button>
+        <button class="btn primary" type="button" id="seal">Sceller l’enveloppe</button>
+      </div>
+    </section>
+
+    <!-- 5. Envoi -->
+    <section id="step-5" class="step share" hidden>
+      <div class="sealed" aria-hidden="true"><div class="mini-env small"><div class="mini-pocket"></div><div class="mini-flap"></div><div class="mini-seal">♥</div></div></div>
+      <h2>Votre enveloppe est scellée.</h2>
+      <p class="lede">Il ne reste plus qu’à l’envoyer à <b data-bind="to"></b>.</p>
+      <div class="link-box">
+        <a id="short-url" target="_blank" rel="noopener"></a>
+        <button class="btn small" type="button" id="copy">Copier</button>
+      </div>
+      <p class="note" id="fallback-note" hidden>Le stockage des liens courts n’est pas encore configuré&nbsp;: ce lien contient toute la carte (sans les photos). Il reste fonctionnel.</p>
+      <label class="field">
+        <span class="label">Message d’accompagnement</span>
+        <textarea id="share-msg" rows="3"></textarea>
+      </label>
+      <div class="share-actions">
+        <a class="btn whatsapp" id="wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.4-.3z"/></svg>
+          Envoyer sur WhatsApp
+        </a>
+        <button class="btn" type="button" id="native-share">Autres applications</button>
+      </div>
+      <figure class="wa-preview" aria-label="Aperçu du message WhatsApp">
+        <div class="wa-bubble">
+          <div class="wa-card">
+            <img id="wa-img" alt="" width="1200" height="630">
+            <div class="wa-meta"><b id="wa-title"></b><span id="wa-desc"></span><small id="wa-host"></small></div>
+          </div>
+          <p id="wa-text"></p>
+        </div>
+        <figcaption>Ce que <span data-bind="to"></span> verra dans WhatsApp</figcaption>
+      </figure>
+      <details class="qr">
+        <summary>Afficher un QR code</summary>
+        <div id="qr"></div>
+      </details>
+      <div class="actions">
+        <a class="btn ghost" id="open-card" target="_blank" rel="noopener">Ouvrir la carte</a>
+        <button class="btn primary" type="button" id="new-card">Créer une autre carte</button>
+      </div>
+    </section>
+  </section>
+</main>
+
+<!-- Aperçu (latéral sur grand écran, plein écran sur mobile) -->
+<aside class="preview" id="preview" aria-label="Aperçu de la carte">
+  <div class="preview-bar">
+    <span>Aperçu en direct</span>
+    <button class="btn small" type="button" id="replay">↺ Rejouer</button>
+    <button class="btn small close" type="button" id="close-preview" aria-label="Fermer l’aperçu">✕</button>
+  </div>
+  <div class="phone"><iframe id="frame" title="Aperçu de la carte" loading="lazy"></iframe></div>
+</aside>
+<button class="fab only-mobile" type="button" id="fab" data-preview hidden>Aperçu</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="/assets/js/story.js?v=3" defer></script>
+<script src="/assets/js/music.js?v=3" defer></script>
+<script src="/assets/js/studio.js?v=3" defer></script>
+</body>
+</html>

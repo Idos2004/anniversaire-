@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<!-- Gabarit des images d'aperçu (1200×630). Généré par : npm run og -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=block">
+<style>
+  :root { --bg: #efe6d8; --bg2: #d9c6a8; --env: #f3e7d3; --shade: #e2cfae; --flap: #f8eedd; --in: #d3bc97; --seal: #8e2b25; --seal2: #c0503a; --ink: #3a2a20; --glow: rgba(255, 214, 150, .55); }
+  body[data-s="souvenirs"] { --bg: #e8dcc8; --bg2: #c7ab7f; --env: #e9d4ae; --shade: #d4b685; --flap: #efdcbb; --in: #bf9f70; --seal: #6b4a2b; --seal2: #9a6c3f; --ink: #3a2f25; }
+  body[data-s="secret"] { --bg: #1d2448; --bg2: #090d1a; --env: #27315c; --shade: #1b2245; --flap: #2f3a6b; --in: #141a33; --seal: #a87a26; --seal2: #f0c36a; --ink: #f3ead8; --glow: rgba(233, 196, 106, .35); }
+  body[data-s="toast"] { --bg: #fde6d2; --bg2: #f4b38c; --env: #fff6ec; --shade: #f6dcc6; --flap: #fffaf3; --in: #f0b892; --seal: #d8452f; --seal2: #ff7d5e; --ink: #2a1a3a; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { position: relative; background: radial-gradient(90% 120% at 50% 45%, var(--bg) 0%, var(--bg2) 100%); font-family: Caveat, cursive; }
+  body::after { content: ""; position: absolute; inset: 0; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.1'/%3E%3C/svg%3E"); }
+  .glow { position: absolute; left: 50%; top: 50%; width: 900px; height: 600px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, var(--glow), transparent); }
+  .scene { position: absolute; left: 50%; top: 52%; width: 600px; height: 400px; transform: translate(-50%, -50%) rotate(-4deg); }
+  .env { position: absolute; inset: 0; filter: drop-shadow(0 34px 40px rgba(0, 0, 0, .28)); }
+  .back { position: absolute; inset: 0; border-radius: 12px; background: linear-gradient(var(--in), var(--shade)); }
+  .letter { position: absolute; left: 7%; right: 7%; top: -13%; height: 60%; border-radius: 6px; background: #fdf9f1; box-shadow: 0 2px 8px rgba(0, 0, 0, .12); }
+  .letter i { position: absolute; left: 9%; right: 9%; height: 4px; border-radius: 4px; background: #ece2d0; }
+  .letter i:nth-child(1) { top: 18%; right: 40%; } .letter i:nth-child(2) { top: 32%; } .letter i:nth-child(3) { top: 46%; right: 22%; }
+  .pocket { position: absolute; inset: 0; border-radius: 12px; background: linear-gradient(165deg, var(--env) 30%, var(--shade)); clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%); }
+  .flapwrap { position: absolute; inset: 0; filter: drop-shadow(0 5px 5px rgba(0,0,0,.16)); }
+  .flap { position: absolute; left: 0; right: 0; top: 0; height: 52%; border-radius: 12px 12px 0 0; background: linear-gradient(180deg, var(--flap), var(--env) 70%, var(--shade)); clip-path: polygon(0 0, 100% 0, 50% 100%); }
+  .flapline { position: absolute; inset: 0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+  .to { position: absolute; left: 0; right: 0; bottom: 8%; text-align: center; font-size: 66px; font-weight: 700; color: var(--ink); }
+  .pm { position: absolute; right: 7%; top: 26%; width: 92px; height: 92px; border-radius: 50%; border: 3px solid var(--seal); opacity: .45; transform: rotate(-14deg);
+    display: grid; place-content: center; text-align: center; font: 700 15px/1.2 "Courier New", monospace; color: var(--seal); }
+  .seal { position: absolute; left: 50%; top: 52%; width: 118px; height: 118px; transform: translate(-50%, -50%); border-radius: 52% 48% 50% 50% / 49% 53% 47% 51%;
+    background: radial-gradient(circle at 34% 30%, var(--seal2), var(--seal) 58%, #2c0e0b 135%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .35), inset 0 -6px 12px rgba(0, 0, 0, .3), inset 0 4px 6px rgba(255, 255, 255, .25); display: grid; place-items: center; }
+  .seal::before { content: ""; position: absolute; inset: 17%; border-radius: 50%; border: 3px solid rgba(0, 0, 0, .18); box-shadow: inset 0 2px 2px rgba(255, 255, 255, .18); }
+  .seal svg { width: 44px; height: 44px; position: relative; }
+  .deco { position: absolute; inset: 0; pointer-events: none; }
+  .spark { position: absolute; color: #d9a441; font: 400 34px/1 Georgia, serif; opacity: .85; }
+  .pol { position: absolute; width: 190px; height: 220px; padding: 12px 12px 40px; background: #fff; box-shadow: 0 12px 24px rgba(0, 0, 0, .2); }
+  .pol::after { content: ""; display: block; width: 100%; height: 100%; background: linear-gradient(135deg, #e8b989, #b9805a 55%, #6d4a35); }
+  .star { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #fff; box-shadow: 0 0 8px #fff; }
+  .cf { position: absolute; width: 14px; height: 24px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="deco" id="deco"></div>
+<div class="scene">
+  <div class="env">
+    <div class="back"></div>
+    <div class="pocket"></div>
+    <div class="to">Pour toi</div>
+    <div class="pm">AVEC<br>AMOUR</div>
+    <div class="flapwrap"><div class="flap"></div></div>
+    <div class="seal"><svg viewBox="0 0 24 24"><path fill="rgba(255,255,255,.82)" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3.1 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.8 0 6 3.9 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+  </div>
+</div>
+<script>
+  const s = new URLSearchParams(location.search).get('style') || 'lettre';
+  document.body.dataset.s = s;
+  const deco = document.getElementById('deco');
+  const add = (cls, css, txt) => { const n = document.createElement('div'); n.className = cls; Object.assign(n.style, css); if (txt) n.textContent = txt; deco.append(n); };
+  if (s === 'lettre') [[150, 120, 40], [1020, 110, 28], [1060, 470, 44], [120, 480, 26], [260, 300, 20], [930, 300, 18]].forEach(([x, y, f]) => add('spark', { left: x + 'px', top: y + 'px', fontSize: f + 'px' }, '✦'));
+  if (s === 'souvenirs') { add('pol', { left: '170px', top: '150px', transform: 'rotate(-14deg)' }); add('pol', { left: '840px', top: '130px', transform: 'rotate(11deg)' }); }
+  if (s === 'secret') for (let i = 0; i < 70; i++) add('star', { left: (Math.sin(i * 12.9898) * 43758.5453 % 1 + 1) % 1 * 1200 + 'px', top: (Math.sin(i * 78.233) * 12345.678 % 1 + 1) % 1 * 630 + 'px', opacity: .3 + (i % 5) / 7, transform: `scale(${.5 + (i % 3) * .4})` });
+  if (s === 'toast') { const c = ['#e2553f', '#2a9d8f', '#ffd166', '#7b5cff', '#f4a261']; for (let i = 0; i < 44; i++) { const x = (i * 157) % 1200, y = (i * 97) % 630; if (x > 270 && x < 930 && y > 90 && y < 560) continue; add('cf', { left: x + 'px', top: y + 'px', background: c[i % 5], transform: `rotate(${i * 37}deg)` }); } }
+</script>
+</body>
+</html>
